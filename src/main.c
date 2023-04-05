@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/05 12:56:03 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/05 13:02:08 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int	main(int argc, char **argv, char **envp)
 // Finish by Friday:
 // prompt
 // lexer (expand)
-//
+
+// Finish by tbd:
 // parser (expand)
 // executer 
-//
+
+// Finish by tbd:
 // builtins & signals
