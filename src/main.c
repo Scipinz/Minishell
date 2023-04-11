@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/11 09:59:47 by quentinbeuk   ########   odam.nl         */
+/*   Updated: 2023/04/11 10:07:28 by quentinbeuk   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-// Tuesdays & Wednesdays
+/* 
+Tuesdays & Wednesdays
 
-// Finish by Friday:
-// prompt
-// lexer (expand)
+Finish by Friday:
+	prompt
+	lexer (expand)
 
-// Finish by tbd:
-// parser (expand)
-// executer 
+Finish by tbd:
+	parser (expand)
+	executer 
 
-// Finish by tbd:
-// builtins & signals
+Finish by tbd:
+	builtins & signals 
+
+*/
 
 void	ft_read_line_example();
 
