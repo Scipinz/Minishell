@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/16 19:44:27 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/03 13:12:56 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/11 09:57:50 by quentinbeuk   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *str, unsigned int start, size_t num)
 	size_t	strlen;
 
 	strlen = ft_strlen(str);
-	if (str == '\0')
+	if (str == NULL)
 		return (0);
 	if (strlen < start)
 		return (ft_strdup(""));

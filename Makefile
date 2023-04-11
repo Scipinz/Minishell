@@ -6,7 +6,7 @@
 #    By: kblok <kblok@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/16 20:46:21 by kblok         #+#    #+#                  #
-#    Updated: 2023/04/05 12:07:56 by kblok         ########   odam.nl          #
+#    Updated: 2023/04/11 10:01:49 by quentinbeuk   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ run:
 #============================================================================: Main compile
 $(NAME): $(OBJS)
 	@$(MAKE) -C $(LIBFT)
-	@$(CC) $(OBJS) $(HEADERS) $(LIBFT)/libft.a -o $(NAME)
+	@$(CC) $(OBJS) $(HEADERS) $(LIBFT)/libft.a -o $(NAME) -lreadline
 	@echo "$(GREEN)✅Done compiling $(NAME)$(RESET)"
 
 #============================================================================: File compile
