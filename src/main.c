@@ -12,9 +12,23 @@
 
 #include "shell.h"
 
+int	clean(bool exit)
+{
+	free (input);
+	return (0);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	return (3);
+	char	*input;
+
+	while (1)
+	{
+		input = read_line_command();
+	}
+	printf("%s", input);
+	clean(true);
+	return (0);
 }
 
 // Tuesdays & Wednesdays
