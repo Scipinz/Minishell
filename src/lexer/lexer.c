@@ -6,12 +6,25 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 12:33:41 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 13:07:10 by qbeukelm      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+int	add_list(t_token_type *type, char *input, int pos, int len)
+{
+	len = 0;
+	pos = 0;
+
+
+	new->len = len;
+	new->pos = pos;
+	new->type = type;
+	new->next = next;
+	free();
+	return(0);
+}
 
 int	get_type(t_token_type *type, char *input, int pos, int len)
 {
@@ -42,8 +55,14 @@ static void	set_lexer(t_lexer **head, char *input, int len, int i)
 {
 	t_token_type	type;
 
-	if (add_token(head, input, i, len) == 0)
+	// if (add_token(head, input, i, len) == 0)
+	// 	return ;
+
+	if (add_list(head, input, i, len) == 0)
 		return ;
+
+	// Create Table
+	
 }
 
 t_lexer	*tokens(t_lexer *head, char *input)
