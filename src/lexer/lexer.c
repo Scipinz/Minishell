@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 16:56:12 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 17:01:11 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	set_type(t_token_type *type, char *input, int pos, int len)
 	str = ft_substr(input, pos, len);
 	if (!str)
 		return (0);
-	expand = ?(input, str);
+	expand = (input, str); // expander = expand_function(input, str);
 	if (input[pos] == '<' && expand)
 		*type = INFILE;
 	else if (input[pos] == '>' && expand)
