@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/17 18:49:59 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 13:37:09 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ typedef enum e_token_type {
 	COMMAND,
 	PIPE,
 	HEREDOC,
-	OUTFILE_APPEND
+	OUTFILE_APPEND,
 } t_token_type;
 
 typedef struct s_lexer {
 	t_token_type	type;
+	int				len;
+	int				pos;
 	struct s_lexer	*next;
 } t_lexer;
 

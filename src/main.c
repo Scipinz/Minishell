@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/17 18:35:05 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 13:25:07 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	clean_all(bool input)
 static int	exec_shell(char *input)
 {
 	// lexer(input);
-	free(input);
+	// free(input);
 	return (1);
 }
 
@@ -33,7 +33,7 @@ char	*read_command_line(void)
 	if (!input)
 	{
 		ft_putendl_fd("exit", 1);
-		rl_clear_history();
+		// rl_clear_history();
 		exit(clean_all(input));
 	}
 	if (input && *input)

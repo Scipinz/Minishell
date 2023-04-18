@@ -6,14 +6,37 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 12:33:41 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 16:20:29 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+static int	add_token(t_lexer **head, int len, int pos, t_token_type type)
+{
+	t_lexer	*new;
+	t_lexer	*empty;
 
-int	get_type(t_token_type *type, char *input, int pos, int len)
+	new = ft_calloc(sizeof(t_lexer), 1);
+	if (!new)
+		return (0);
+	new->len = len;
+	new->pos = pos;
+	new->type = type;
+	new->next = NULL;
+	if (!head)
+		*head = new;
+	else
+	{
+		empty = *head;
+		while (empty->next)
+			empty = empty->next;
+		empty->next = new;
+	}
+	return (1);
+}
+
+int	set_type(t_token_type *type, char *input, int pos, int len)
 {
 	char	*str;
 	bool	expand;
@@ -42,6 +65,8 @@ static void	set_lexer(t_lexer **head, char *input, int len, int i)
 {
 	t_token_type	type;
 
+	if (set_type(&type, input, i, len) == 0)
+		return ;
 	if (add_token(head, input, i, len) == 0)
 		return ;
 }
@@ -60,7 +85,7 @@ t_lexer	*tokens(t_lexer *head, char *input)
 		if (input[i] == '\"' || input[i] == "\'")
 		{
 			i++;
-			// len = quote_check(last_quote(&input[i]));
+			len = quote_check(last_quote(&input[i]));
 		}
 		else if (is_special(input[i]) == 0)
 			len = lexer_length(&input[i]);
