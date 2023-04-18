@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 16:20:29 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 16:56:12 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ static void	set_lexer(t_lexer **head, char *input, int len, int i)
 		return ;
 	if (add_token(head, input, i, len) == 0)
 		return ;
+
+	// Create Table
+	
 }
 
 t_lexer	*tokens(t_lexer *head, char *input)

@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 13:37:09 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 16:56:34 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ typedef struct s_lexer {
 	int				pos;
 	struct s_lexer	*next;
 } t_lexer;
+
+
+
 
 #endif

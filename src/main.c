@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 13:25:07 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/18 16:56:18 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*read_command_line(void)
 {
 	char *input;
 
-	input = readline("[pls work]: ");
+	input = readline("[minishell]: ");
 	if (!input)
 	{
 		ft_putendl_fd("exit", 1);
@@ -56,15 +56,33 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-// Tuesdays & Wednesdays
+/* quote check: count quotes / 0.5, second half reverse.
 
-// Finish by Friday:
-// prompt
-// lexer (expand)
+Tuesdays & Wednesdays
 
-// Finish by tbd:
-// parser (expand)
-// executer 
+Finish by Friday:
+prompt
+lexer (expand)
 
-// Finish by tbd:
-// builtins & signals
+Finish by tbd:
+parser (expand)
+executer 
+
+Finish by tbd:
+builtins & signals
+
+
+[ NEXT ]
+
+kbloc
+	add_list()
+	add_quote()
+	
+
+qbeukelm
+	create_table()
+	get_type()
+
+
+
+ */
