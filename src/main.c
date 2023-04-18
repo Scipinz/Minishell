@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 01:53:18 by quentinbeuk   ########   odam.nl         */
+/*   Updated: 2023/04/18 10:20:03 by quentinbeuk   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,16 @@ Finish by tbd:
 
 */
 
-void	ft_read_line_example();
-
-int	main(int argc, char **argv, char **envp)
-{
-
-	ft_read_line_example();
-	return (3);
-}
-
+//=========================================================: Parse
 void	ft_parse_tokes(char **tokens)
 {
 	int		i;
 	int		j;
-	char	*operators[10] = { "<", ">", "<<", ">>", "&", "&&", "|", "||" };
 	
+	static const char	*operators[10] = { 
+		"<", ">", "<<", ">>", "&", "&&", "|", "||" 
+	}; // ! Add to .h
+
 	i = 0;
 	while (tokens[i] != NULL)
 	{
@@ -63,11 +58,12 @@ void	ft_parse_tokes(char **tokens)
 	}
 }
 
-void	ft_read_line_example()
+//=========================================================: Read Line
+int		ft_read_line()
 {
 	char			*input;
 	char			**tokens;
-	const char 		delimiter = ' '; // Add to .h
+	const char 		delimiter = ' '; // ! Add to .h
 
 	while (1)
 	{
@@ -75,16 +71,16 @@ void	ft_read_line_example()
 		input = readline("$ ");
 		if (ft_strcmp(input, "exit") == 0)
 		{
-			free(input);
+			free (input);
 			break ;
 		}
-
 		printf("Input string: %s\n", input);
-		// add_history(input);
 
 
 		// ===== [ Tokens ] =====
 		tokens = ft_split(input, delimiter);
+		if (tokens == NULL)
+			return (FAILURE); // ! Handle error
 		ft_parse_tokes(tokens);
 
 
@@ -92,4 +88,14 @@ void	ft_read_line_example()
 		free (input);
 		free (tokens);
 	}
+	return (SUCCESS);
+}
+
+//=========================================================: Main
+int	main(int argc, char **argv, char **envp)
+{
+	if (ft_read_line() != SUCCESS)
+		return (FAILURE); // ! Handle error
+	
+	return (SUCCESS);
 }
