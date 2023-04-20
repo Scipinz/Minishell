@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/19 14:34:54 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/20 16:12:55 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ typedef struct s_lexer {
 	struct s_lexer	*next;
 } t_lexer;
 
+//functions
+//lexer_check
+int is_special(char c);
+int symbol_length(char *input);
+int lexer_length(char *input);
 
-
+//quote_check
+int	last_quote(char *input);
+int	quote_check(int end);
 
 #endif

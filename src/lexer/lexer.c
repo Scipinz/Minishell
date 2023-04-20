@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/19 14:35:58 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/20 16:10:10 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	set_type(t_token_type *type, char *input, int pos, int len)
 	str = ft_substr(input, pos, len);
 	if (!str)
 		return (0);
-	expand = (input, str); // expander = expand_function(input, str);
+	// expand = (input, str); // expander = expand_function(input, str);
 	if (input[pos] == '<' && expand)
 		*type = INFILE;
 	else if (input[pos] == '>' && expand)
@@ -67,7 +67,7 @@ static void	set_lexer(t_lexer **head, char *input, int len, int i)
 
 	if (set_type(&type, input, i, len) == 0)
 		return ;
-	if (add_token(head, input, i, len) == 0)
+	if (add_token(head, len, i, type) == 0)
 		return ;
 
 	// Create Table
@@ -85,7 +85,7 @@ t_lexer	*tokens(t_lexer *head, char *input)
 	{
 		while (input[i] && ft_isspace(input[i]))
 			i++;
-		if (input[i] == '\"' || input[i] == "\'")
+		if (input[i] == '\"' || input[i] == '\'')
 		{
 			i++;
 			len = quote_check(last_quote(&input[i]));
@@ -109,4 +109,5 @@ t_lexer	*lexer(char *input)
 
 	head = NULL;
 	head = tokens(head, input);
+	return (head);
 }

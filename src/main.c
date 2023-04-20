@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 16:56:18 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/20 16:03:38 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	clean_all(bool input)
 {
-	free (input);
+	// free (input);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 17:02:08 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 14:33:45 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/20 16:07:57 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int is_special(char c)
     int i;
 
     i = 0;
-    while (SPECIAL_CHARS[i] || c == '\"' || c == "\'")
+    while (SPECIAL_CHARS[i] || c == '\"' || c == '\'')
     {
         if (c == SPECIAL_CHARS[i] || c == '\"' || c == '\'')
             return (1);
