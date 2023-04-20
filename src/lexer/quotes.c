@@ -6,13 +6,54 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:51:07 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/18 18:42:03 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/20 15:46:33 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+static int	check_quotes(char *input)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
+	while (input[i])
+	{
+		if (input[i] = '\"')
+		{
+			j = i;
+			break ;
+		}
+		i++;
+	}
+	return j;
+}
+
+static int	check_quotes(char *input)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (input[i])
+	{
+		if (input[i] = '\'')
+		{
+			j = i;
+			break ;
+		}
+		else if (input[i] == '\"')
+		{
+			j = double_quote();
+			break ;
+		}
+		i++;
+	}
+	return j;
+}
 
 int	last_quote(char *input)
 {
