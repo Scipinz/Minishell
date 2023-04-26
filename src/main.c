@@ -12,10 +12,11 @@
 
 #include "shell.h"
 
-int	clean_all(bool input)
+int	clean_all(t_lexer *lexer, int exit, bool input)
 {
-	// free (input);
-	return (0);
+	clear_lexer(&lexer);
+	lexer = NULL;
+	return (exit);
 }
 
 static int	exec_shell(char *input)
@@ -33,8 +34,8 @@ char	*read_command_line(void)
 	if (!input)
 	{
 		ft_putendl_fd("exit", 1);
-		// rl_clear_history();
-		exit(clean_all(input));
+		rl_clear_history();
+		exit(clean_all(NULL, exit, true));
 	}
 	if (input && *input)
 		add_history(input);
@@ -60,15 +61,11 @@ int	main(int argc, char **argv, char **envp)
 
 Tuesdays & Wednesdays
 
-Finish by Friday:
+To-Do:
 prompt
 lexer (expand)
-
-Finish by tbd:
 parser (expand)
 executer 
-
-Finish by tbd:
 builtins & signals
 
 
@@ -83,6 +80,5 @@ qbeukelm
 	create_table()
 	get_type()
 
-
-
+	
  */
