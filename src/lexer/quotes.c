@@ -12,66 +12,14 @@
 
 #include "shell.h"
 
-static int	double_quotes(char *input)
+int    check_quotes(char *input)
 {
-	int	i;
-	int	j;
+    int    i;
 
-	i = 0;
-	j = 0;
-	while (input[i])
-	{
-		if (input[i] == '\"')
-		{
-			j = i;
-			break ;
-		}
-		i++;
-	}
-	return j;
-}
-
-static int	check_quotes(char *input)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (input[i])
-	{
-		if (input[i] == '\'')
-		{
-			j = i;
-			break ;
-		}
-		else if (input[i] == '\"')
-		{
-			j = double_quotes(&input[i]);
-			break ;
-		}
-		i++;
-	}
-	return j;
-}
-
-int	last_quote(char *input)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (input[i])
-	{
-		if (input[i] == '\"')
-		{
-			j = i;
-			break ;
-		}
-		i++;
-	}
-	return (j);
+    i = 0;
+    while ((input[i] != '\'' && input[i] != '\"') && input[i])
+        i++;
+    return i;
 }
 
 int	quote_check(int end)
