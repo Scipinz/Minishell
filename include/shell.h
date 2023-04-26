@@ -52,7 +52,8 @@ int symbol_length(char *input);
 int lexer_length(char *input);
 
 //quote_check
-int	last_quote(char *input);
+bool check_type(char *input, char *str);
+int check_quotes(char *input);
 int	quote_check(int end);
 
 #endif
