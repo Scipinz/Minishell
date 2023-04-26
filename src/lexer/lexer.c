@@ -44,7 +44,7 @@ int	set_type(t_token_type *type, char *input, int pos, int len)
 	str = ft_substr(input, pos, len);
 	if (!str)
 		return (0);
-	// expand = (input, str); // expander = expand_function(input, str);
+	expand = check_type(input, str);
 	if (input[pos] == '<' && expand)
 		*type = INFILE;
 	else if (input[pos] == '>' && expand)
@@ -88,7 +88,7 @@ t_lexer	*tokens(t_lexer *head, char *input)
 		if (input[i] == '\"' || input[i] == '\'')
 		{
 			i++;
-			len = quote_check(last_quote(&input[i]));
+			len = quote_check(check_quotes(&input[i]));
 		}
 		else if (is_special(input[i]) == 0)
 			len = lexer_length(&input[i]);
