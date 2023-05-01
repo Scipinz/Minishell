@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/20 16:03:38 by kblok         ########   odam.nl         */
+/*   Updated: 2023/04/20 16:19:11 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,9 @@ builtins & signals
 kbloc
 	add_list()
 	add_quote()
-	
 
 qbeukelm
 	create_table()
 	get_type()
-
-
 
  */
