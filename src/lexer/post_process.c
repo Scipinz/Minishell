@@ -6,13 +6,13 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/01 13:00:24 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/01 14:51:01 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/01 14:55:04 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	set_arg(t_lexer *lexer)
+static int	set_arg(t_lexer *lexer, t_token_type )
 {
 	if (lexer->next == NULL)
 		return (0);
