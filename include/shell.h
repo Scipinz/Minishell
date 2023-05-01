@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/20 16:12:55 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/01 14:19:35 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,32 @@ typedef enum e_token_type {
 	PIPE,
 	HEREDOC,
 	OUTFILE_APPEND,
-} t_token_type;
+}	t_token_type;
 
 typedef struct s_lexer {
 	t_token_type	type;
 	int				len;
 	int				pos;
+	int				adjacent;
 	struct s_lexer	*next;
-} t_lexer;
+}	t_lexer;
+
+typedef struct s_shell {
+	t_lexer		*lexer;
+}	t_shell;
+
+extern t_shell	g_shell;
 
 //functions
-//lexer_check
-int is_special(char c);
-int symbol_length(char *input);
-int lexer_length(char *input);
+//lexer
+int		is_special(char c);
+int		symbol_length(char *input);
+int		lexer_length(char *input);
+void	print_list(t_lexer *head);
 
 //quote_check
-int	last_quote(char *input);
-int	quote_check(int end);
+bool	check_type(char *input, char *str);
+int		check_quotes(char *input);
+int		quote_check(int end);
 
 #endif

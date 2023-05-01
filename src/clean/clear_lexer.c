@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   quotes.c                                           :+:    :+:            */
+/*   clear_lexer.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/17 16:51:07 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/01 12:42:58 by kblok         ########   odam.nl         */
+/*   Created: 2023/05/01 12:36:13 by kblok         #+#    #+#                 */
+/*   Updated: 2023/05/01 12:36:29 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	check_quotes(char *input)
+bool	clear_lexer(t_lexer **head)
 {
-	int	i;
+	t_lexer	*next;
+	t_lexer	*temp;
 
-	i = 0;
-	while ((input[i] != '\'' && input[i] != '\"') && input[i])
-		i++;
-	return (i);
-}
-
-int	quote_check(int end)
-{
-	int	len;
-
-	len = 0;
-	if (end == 0)
-		return (0);
-	while (len < end)
-		len++;
-	return (len);
+	temp = *head;
+	while (temp)
+	{
+		next = temp->next;
+		free(temp);
+		temp->next;
+	}
+	*head = NULL;
+	return (false);
 }

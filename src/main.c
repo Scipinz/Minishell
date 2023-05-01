@@ -6,35 +6,49 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/04/20 16:19:11 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/01 12:55:41 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	clean_all(bool input)
+int	clean_all(t_lexer *lexer, int exit, bool input)
 {
-	// free (input);
-	return (0);
+	clear_lexer(&lexer);
+	lexer = NULL;
+	return (exit);
 }
 
 static int	exec_shell(char *input)
 {
-	// lexer(input);
-	// free(input);
+	g_shell.lexer = lexer(input);
+	if (!g_shell.lexer)
+	{
+		clean_all(g_shell.lexer, 0, false);
+		free(input);
+		return (1);
+	}
+	if (!parser(input, g_shell.lexer))
+	{
+		free(input);
+		exit(clean_all(g_shell.lexer, EXIT_FAILURE, true));
+	}
+	lexer(input);
+	clean_all(g_shell.lexer, 0, false);
+	free(input);
 	return (1);
 }
 
 char	*read_command_line(void)
 {
-	char *input;
+	char	*input;
 
 	input = readline("[minishell]: ");
 	if (!input)
 	{
 		ft_putendl_fd("exit", 1);
-		// rl_clear_history();
-		exit(clean_all(input));
+		rl_clear_history();
+		exit(clean_all(NULL, exit, true));
 	}
 	if (input && *input)
 		add_history(input);
@@ -60,15 +74,11 @@ int	main(int argc, char **argv, char **envp)
 
 Tuesdays & Wednesdays
 
-Finish by Friday:
+To-Do:
 prompt
 lexer (expand)
-
-Finish by tbd:
 parser (expand)
 executer 
-
-Finish by tbd:
 builtins & signals
 
 
