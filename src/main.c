@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/01 12:55:41 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/02 14:31:33 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int	exec_shell(char *input)
 		free(input);
 		return (1);
 	}
-	if (!parser(input, g_shell.lexer))
-	{
-		free(input);
-		exit(clean_all(g_shell.lexer, EXIT_FAILURE, true));
-	}
+	// if (!parser(input, g_shell.lexer))
+	// {
+	// 	free(input);
+	// 	exit(clean_all(g_shell.lexer, EXIT_FAILURE, true));
+	// }
 	lexer(input);
 	clean_all(g_shell.lexer, 0, false);
 	free(input);
@@ -48,7 +48,7 @@ char	*read_command_line(void)
 	{
 		ft_putendl_fd("exit", 1);
 		rl_clear_history();
-		exit(clean_all(NULL, exit, true));
+		exit(clean_all(NULL, g_shell.exit_code, true));
 	}
 	if (input && *input)
 		add_history(input);
@@ -66,17 +66,14 @@ int	main(int argc, char **argv, char **envp)
 		input = read_command_line();
 		exec_shell(input);
 	}
-	printf("%s", input);
 	return (0);
 }
 
-/* quote check: count quotes / 0.5, second half reverse.
-
+/*
 Tuesdays & Wednesdays
 
 To-Do:
-prompt
-lexer (expand)
+
 parser (expand)
 executer 
 builtins & signals
@@ -84,12 +81,14 @@ builtins & signals
 
 [ NEXT ]
 
-kbloc
+kblok
 	add_list()
 	add_quote()
+	post_process
+	print
+	envp
 
 qbeukelm
 	create_table()
 	get_type()
-
  */

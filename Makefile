@@ -6,7 +6,7 @@
 #    By: kblok <kblok@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/16 20:46:21 by kblok         #+#    #+#                  #
-#    Updated: 2023/05/01 12:31:32 by kblok         ########   odam.nl          #
+#    Updated: 2023/05/02 14:20:14 by kblok         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS		=	$(addprefix src/, \
 						lexer.c \
 						check.c \
 						quotes.c \
-						print_list.c \
+						lexer_utils.c \
+						post_process.c \
 				))
 
 #============================================================================: Color codes

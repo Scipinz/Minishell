@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/01 14:48:27 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/02 14:24:46 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <signal.h>
+# include <termios.h>
 
 //defines
 # define SPECIAL_CHARS "<>|"
@@ -49,20 +50,22 @@ typedef struct s_lexer {
 
 typedef struct s_shell {
 	t_lexer		*lexer;
+	int			exit_code;
 }	t_shell;
 
 extern t_shell	g_shell;
 
 //functions
 //lexer
+t_lexer	*lexer(char *input);
 int		is_special(char c);
 int		symbol_length(char *input);
 int		lexer_length(char *input);
 void	print_list(t_lexer *head);
-
-//quote_check
+void	post_process(char *input, t_lexer *lexer);
 bool	check_type(char *input, char *str);
 int		check_quotes(char *input);
 int		quote_check(int end);
+bool	clear_lexer(t_lexer **head);
 
 #endif
