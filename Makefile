@@ -6,7 +6,7 @@
 #    By: kblok <kblok@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/16 20:46:21 by kblok         #+#    #+#                  #
-#    Updated: 2023/05/02 14:20:14 by kblok         ########   odam.nl          #
+#    Updated: 2023/05/02 17:26:34 by kblok         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ NAME		= 	minishell
 OBJS		= 	$(SRCS:srcs/%.c=objs/%.o)
 
 #==============================================================================: Compile variables
-CC			= 	cc
-CFLAGS		= 	-Wall -Werror -Wextra
-MAKEFLAGE	=	--no-print-directory
+CC			= 	gcc
+CFLAGS		= 	-Wall -Werror -Wextra -Wunreachable-code
+MAKEFLAGS	=	--no-print-directory
 RM			=	rm -rf
-AR			=	ar rcs
-MKDIR		=	mkdir -p objs
-HEADERS		= 	-I include -I $(LIBFT)
+MKDIR		=	mkdir -p
+AR			=	-lreadline -L ~/.brew/opt/readline/lib
+HEADERS		= 	-I include -I ~/.brew/opt/readline/include
 
 #============================================================================: Include files
 LIBFT		= 	libft/
@@ -31,13 +31,14 @@ LIBFT		= 	libft/
 #============================================================================: Source files 
 SRCS		=	$(addprefix src/, \
 						main.c \
-					$(addprefix lexer/, \
-						lexer.c \
-						check.c \
-						quotes.c \
-						lexer_utils.c \
-						post_process.c \
-				))
+				$(addprefix lexer/, \
+					check.c \
+					lexer_utils.c \
+					lexer.c \
+					post_process.c \
+					quotes.c) \
+				$(addprefix signals/, \
+					signals.c))
 
 #============================================================================: Color codes
 GREEN		= \033[1;32m
@@ -47,25 +48,23 @@ MAGENTA		= \033[1;35m
 RESET		= \033[0m
 
 #============================================================================: Make commands
-all: message $(NAME)
-
-#============================================================================: Executable run command
-run:
-	@./$(NAME) $(ARGS)
+all: libft message $(NAME)
 
 #============================================================================: Main compile
 $(NAME): $(OBJS)
-	@$(MAKE) -C $(LIBFT)
-	@$(CC) $(OBJS) $(HEADERS) $(LIBFT)/libft.a -o $(NAME)
-	@echo "$(GREEN)✅Done compiling $(NAME)$(RESET)"
+	@$(CC) $(OBJS) $(HEADERS) $(ARCHIVES) $(LIBFT)/libft.a -o $(NAME)
+	@echo "$(GREEN)✅Done compiling $(NAME) $(RESET)"
 
 #============================================================================: File compile
 objs/%.o: srcs/%.c
-	@$(MKDIR)
+	@$(MKDIR) objs
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 ifeq ($(DB),1)
 	@printf "$(GREEN)\r🔨Compiling: $(MAGENTA)$(notdir $<)$(GREEN)\r\e[35C[OK]\n$(RESET)"
 endif
+#============================================================================: Build libft
+libft:
+	@$(MAKE) -C $(LIBFT) $(MAKEFLAGS)
 
 #============================================================================: Build messages
 message:
@@ -75,13 +74,13 @@ message:
 #============================================================================: Remove object files
 clean:
 	@$(RM) objs/
-	@$(MAKE) clean -C libft
+	@$(MAKE) clean -C $(LIBFT)
 	@echo "$(RED)🧹Removed object folders!$(RESET)"
 
 #============================================================================: Remove object files and executables
 fclean: clean
 	@$(RM) $(NAME)
-	@$(MAKE) fclean -C libft
+	@$(MAKE) fclean -C $(LIBFT)
 	@echo "$(RED)🧹Removed $(NAME)!$(RESET)"
 
 #============================================================================: Remove object files and executables then remake executables

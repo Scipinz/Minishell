@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/02 14:42:09 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/02 17:28:27 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/wait.h>
-# include <stdio.h>
 # include <stdbool.h>
+# include <termios.h>
 # include <stdlib.h>
+# include <signal.h>
 # include <limits.h>
+# include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
-# include <signal.h>
-# include <termios.h>
 
 //defines
 # define SPECIAL_CHARS "<>|"
@@ -49,14 +49,28 @@ typedef struct s_lexer {
 	struct s_lexer	*next;
 }	t_lexer;
 
+typedef struct s_env {
+	char			*value;
+	char			*key;
+	struct s_env	*next;
+}	t_env;
+
 typedef struct s_shell {
 	t_lexer		*lexer;
+	t_env		*env;
 	int			exit_code;
 }	t_shell;
 
 extern t_shell	g_shell;
 
-//functions
+// main
+int		main(int argc, char **argv, char **envp);
+int		clean_all(t_lexer *lexer, int exit, bool input);
+char	*read_command_line(void);
+
+//signals
+void	init_signals(void);
+
 //lexer
 t_lexer	*lexer(char *input);
 int		is_special(char c);
