@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 16:26:02 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/03 17:19:00 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/03 17:38:35 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	signal_handling(int i)
 		write(1, "\n", 1);
 		rl_on_new_line();
 		rl_replace_line("", 0);
-		rl_display();
+		rl_redisplay();
 	}
 }
 

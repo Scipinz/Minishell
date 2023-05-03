@@ -6,11 +6,13 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/03 14:32:14 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/03 17:53:58 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/shell.h"
+
+t_shell	g_shell;
 
 int	clean_all(t_lexer *lexer, int exit, bool input)
 {
