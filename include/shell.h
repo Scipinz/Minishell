@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/02 17:28:27 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/03 14:32:34 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 //includes
 # include "../libft/libft.h"
-# include <readline/readline.h>
-# include <readline/history.h>
+# include <stdio.h>
 # include <sys/wait.h>
 # include <stdbool.h>
-# include <termios.h>
 # include <stdlib.h>
 # include <signal.h>
-# include <limits.h>
-# include <stdio.h>
 # include <fcntl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <limits.h>
+# include <termios.h>
 # include <errno.h>
 
 //defines

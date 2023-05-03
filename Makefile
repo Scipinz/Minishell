@@ -6,12 +6,12 @@
 #    By: kblok <kblok@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/16 20:46:21 by kblok         #+#    #+#                  #
-#    Updated: 2023/05/02 17:26:34 by kblok         ########   odam.nl          #
+#    Updated: 2023/05/03 17:24:00 by kblok         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 #==============================================================================: Filename
-NAME		= 	minishell
+NAME		= 	minishell 
 
 #==============================================================================: Source to object conversion 
 OBJS		= 	$(SRCS:srcs/%.c=objs/%.o)
@@ -26,7 +26,7 @@ AR			=	-lreadline -L ~/.brew/opt/readline/lib
 HEADERS		= 	-I include -I ~/.brew/opt/readline/include
 
 #============================================================================: Include files
-LIBFT		= 	libft/
+LIBFT		= 	libft
 
 #============================================================================: Source files 
 SRCS		=	$(addprefix src/, \
@@ -52,7 +52,8 @@ all: libft message $(NAME)
 
 #============================================================================: Main compile
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(HEADERS) $(ARCHIVES) $(LIBFT)/libft.a -o $(NAME)
+	@$(MAKE) -C $(LIBFT)
+	@$(CC) $(OBJS) $(HEADERS) -lreadline $(AR) $(LIBFT)/libft.a -o $(NAME)
 	@echo "$(GREEN)✅Done compiling $(NAME) $(RESET)"
 
 #============================================================================: File compile
@@ -62,9 +63,6 @@ objs/%.o: srcs/%.c
 ifeq ($(DB),1)
 	@printf "$(GREEN)\r🔨Compiling: $(MAGENTA)$(notdir $<)$(GREEN)\r\e[35C[OK]\n$(RESET)"
 endif
-#============================================================================: Build libft
-libft:
-	@$(MAKE) -C $(LIBFT) $(MAKEFLAGS)
 
 #============================================================================: Build messages
 message:
