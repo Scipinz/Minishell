@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/08 10:51:30 by quentinbeuk   ########   odam.nl         */
+/*   Updated: 2023/05/08 13:13:19 by quentinbeuk   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SHELL_H
 
 # include "../libft/libft.h"
+# include <stdio.h>
 
 //=========================================================: Enum
 typedef enum e_exit
@@ -30,26 +31,36 @@ typedef enum e_bool
 
 //=========================================================: CMD & Args
 // Describe a simple command and arguments
-typedef struct s_command
-{
-    char    command;
-    int     arg_count;
-    char    **arguments;
-    char    **options;
-} t_command;
+// typedef struct s_command
+// {
+//     char    command;
+//     int     arg_count;
+//     char    **arguments;
+//     char    **options;
+// } t_command;
 
 
 //=========================================================: CMD Table
 // Describes a complete command with the multiple pipes 
 // if any and input/output redirection if any.
-typedef struct s_table
+// typedef struct s_table
+// {
+//     char        *in_file;
+//     char        *out_file;
+//     char        *err_file;
+//     int         cmd_count;
+//     t_command   *command;
+// } t_table;
+
+
+//=========================================================: AST Table
+typedef struct s_ast_node
 {
-    char        *in_file;
-    char        *out_file;
-    char        *err_file;
-    int         cmd_count;
-    t_command   *command;
-} t_table;
+    char *type;
+    char *value;
+    struct s_ast_node **children;
+    int num_children;
+} t_ast_node;
 
 
 
@@ -66,6 +77,7 @@ typedef enum e_token_type {
 
 typedef struct s_lexer {
 	t_token_type	type;
+	char			*value_temp; // ! <- remove
 	int				len;
 	int				pos;
 	int				adjacent;
@@ -86,7 +98,7 @@ typedef struct s_shell {
 
 extern t_shell	g_shell;
 
-
+t_ast_node	*ft_parse(t_lexer *head);
 
 
 #endif

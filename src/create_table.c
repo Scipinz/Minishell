@@ -6,7 +6,7 @@
 /*   By: quentinbeukelman <quentinbeukelman@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 10:47:09 by quentinbeuk   #+#    #+#                 */
-/*   Updated: 2023/05/08 11:26:57 by quentinbeuk   ########   odam.nl         */
+/*   Updated: 2023/05/08 13:05:44 by quentinbeuk   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,7 @@ Abstract Syntax Tree
  */
 
 
-typedef struct s_ast_node
-{
-    char *type;
-    char *value;
-    struct s_ast_node **children;
-    int num_children;
-} t_ast_node;
-
-
-t_ast_node *parse(t_lexer *head) 
+t_ast_node *ft_parse(t_lexer *head) 
 {
     t_ast_node  *root = calloc(1, sizeof(t_ast_node));
 
@@ -60,7 +51,7 @@ t_ast_node *parse(t_lexer *head)
         {
             t_ast_node *cmd = calloc(1, sizeof(t_ast_node));
             cmd->type = "command";
-            cmd->value = curr->value;
+            cmd->value = curr->value_temp;
             cmd->children = calloc(1, sizeof(t_ast_node *));
             cmd->num_children = 0;
 
@@ -70,7 +61,7 @@ t_ast_node *parse(t_lexer *head)
             {
                 t_ast_node *arg = calloc(1, sizeof(t_ast_node));
                 arg->type = "argument";
-                arg->value = curr->value;
+                arg->value = curr->value_temp;
                 arg->children = NULL;
                 arg->num_children = 0;
                 cmd->children = realloc(cmd->children, (cmd->num_children + 1) * sizeof(t_ast_node *));
@@ -95,7 +86,7 @@ t_ast_node *parse(t_lexer *head)
             t_ast_node *left_cmd = root->children[root->num_children - 1];
             t_ast_node *right_cmd = calloc(1, sizeof(t_ast_node));
             right_cmd->type = "command";
-            right_cmd->value = curr->next->value;
+            right_cmd->value = curr->next->value_temp;
             right_cmd->children = calloc(1, sizeof(t_ast_node *));
             right_cmd->num_children = 0;
             curr = curr->next;
@@ -104,7 +95,7 @@ t_ast_node *parse(t_lexer *head)
             {
                 t_ast_node *arg = calloc(1, sizeof(t_ast_node));
                 arg->type = "argument";
-                arg->value = curr->value;
+                arg->value = curr->value_temp;
                 arg->children = NULL;
                 arg->num_children = 0;
                 right_cmd->children = realloc(right_cmd->children, (right_cmd->num_children + 1) * sizeof(t_ast_node *));
@@ -120,7 +111,7 @@ t_ast_node *parse(t_lexer *head)
         else 
         {
             // Handle unexpected tokens
-            printf("Error: unexpected token %s\n", curr->value);
+            printf("Error: unexpected token %s\n", curr->value_temp);
             exit(1);
         }
     }
