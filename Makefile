@@ -6,7 +6,7 @@
 #    By: kblok <kblok@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/16 20:46:21 by kblok         #+#    #+#                  #
-#    Updated: 2023/05/03 17:24:00 by kblok         ########   odam.nl          #
+#    Updated: 2023/05/04 14:00:05 by kblok         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,10 @@ SRCS		=	$(addprefix src/, \
 					lexer.c \
 					post_process.c \
 					quotes.c) \
+				$(addprefix env/, \
+					env.c \
+					env_utils.c) \
+					# clean_env.c \
 				$(addprefix signals/, \
 					signals.c))
 

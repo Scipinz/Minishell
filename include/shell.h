@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/03 14:32:34 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/04 14:01:27 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,10 @@ bool	check_type(char *input, char *str);
 int		check_quotes(char *input);
 int		quote_check(int end);
 bool	clear_lexer(t_lexer **head);
+
+//env
+t_env	*parse_env(char **envp);
+int	add_env(t_env **head, char *env);
+int env_str(t_env *env, char *str);
 
 #endif
