@@ -55,9 +55,19 @@ typedef struct s_env {
 	struct s_env	*next;
 }	t_env;
 
+typedef struct s_cmd
+{
+	int		fd_in;
+	int		fd_out;
+	char	*arg;
+
+} t_cmd;
+
 typedef struct s_shell {
 	t_lexer		*lexer;
 	t_env		*env;
+	size_t		cmd_len;
+	t_cmd		cmd;
 	int			exit_code;
 }	t_shell;
 
