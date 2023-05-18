@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   parse_cmds.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: kblok <kblok@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/05/15 14:52:43 by kblok         #+#    #+#                 */
+/*   Updated: 2023/05/18 14:16:41 by kblok         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 char **parse_arg(char *input, t_lexer *lexer, int arg_len)
@@ -62,9 +74,9 @@ int	parse_cmds(char *input, t_lexer *lexer)
 {
 	int		arg_len;
 	size_t	i;
-
+	
 	g_shell.cmd_len = cmd_count(lexer);
-	g_shell.cmd = ft_calloc(sizeof(t_command), g_shell.cmd_len);
+	g_shell.cmd = ft_calloc(sizeof(t_cmd), g_shell.cmd_len);
 	if (!g_shell.cmd)
 		return (0);
 	i = 0;

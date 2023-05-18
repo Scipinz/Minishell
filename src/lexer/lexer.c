@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/01 13:01:40 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/18 14:08:41 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_lexer	*tokens(t_lexer *head, char *input)
 			len = quote_check(check_quotes(&input[i]));
 		}
 		else if (is_special(input[i]) == 0)
-			len = lexer_length(&input[i]);
+			len = token_length(&input[i]);
 		else
 			len = symbol_length(&input[i]);
 		if (len == 0)

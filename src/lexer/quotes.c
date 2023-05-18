@@ -6,11 +6,16 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:51:07 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/01 12:42:58 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/18 15:11:40 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/* 
+"" - For strings
+'' - For characters
+*/
 
 int	check_quotes(char *input)
 {

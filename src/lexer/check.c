@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 17:02:08 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/02 16:44:22 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/18 13:59:14 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	symbol_length(char *input)
 	return (0);
 }
 
-int	lexer_length(char *input)
+int	token_length(char *input)
 {
 	int	i;
 

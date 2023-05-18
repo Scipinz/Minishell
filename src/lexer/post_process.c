@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/01 13:00:24 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/02 14:17:35 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/18 14:08:37 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	find_adjacent(char *input, t_lexer *head)
 }
 
 static int	set_arg(t_lexer *lexer)
+// Emphasise check argument vs doc
 {
 	if (lexer->next == NULL)
 		return (0);
@@ -45,6 +46,7 @@ static int	set_arg(t_lexer *lexer)
 }
 
 static int	infile_output(char *input, t_lexer *lexer)
+// Confusing In/Out/OutAppend/Her - Files
 {
 	char	*str;
 

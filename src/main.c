@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/03 17:53:58 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/18 15:12:39 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	exec_shell(char *input)
 	// 	free(input);
 	// 	exit(clean_all(g_shell.lexer, EXIT_FAILURE, true));
 	// }
+	
 	lexer(input);
 	clean_all(g_shell.lexer, 0, false);
 	free(input);
@@ -73,25 +74,21 @@ int	main(int argc, char **argv, char **envp)
 }
 
 /*
-Tuesdays & Wednesdays
+kblok work: Friday & Saturday
 
-To-Do:
-
-parser (expand)
-executer 
-builtins & signals
-
-
-[ NEXT ]
+lexer -> parser -> expander -> executor
 
 kblok
 	add_list()
 	add_quote()
 	post_process
 	print
-	envp
+	? envp
+	? norminette
+	? free
 
 qbeukelm
-	create_table()
-	get_type()
+	? table of commands
+	? seg fault
+	? separate functions
  */

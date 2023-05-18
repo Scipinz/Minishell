@@ -6,11 +6,18 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 13:47:30 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/04 14:00:42 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/18 14:15:46 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/* 
+Environment
+
+1. Get env path "setup"
+2. Send env to parser -> PATH - Variables (Seperate)
+*/
 
 int env_str(t_env *env, char *str)
 {
