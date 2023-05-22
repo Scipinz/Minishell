@@ -6,7 +6,7 @@
 #    By: kblok <kblok@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/11/16 20:46:21 by kblok         #+#    #+#                  #
-#    Updated: 2023/05/22 15:34:48 by kblok         ########   odam.nl          #
+#    Updated: 2023/05/22 16:10:11 by kblok         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS		=	$(addprefix src/, \
 					post_process.c \
 					quotes.c) \
 				$(addprefix parser/, \
+					abstract_syntax_tree.c \
 					parser.c \
 					parse_adjacent.c \
 					parse_cmds.c) \

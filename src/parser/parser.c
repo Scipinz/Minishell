@@ -6,13 +6,13 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/15 14:53:00 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/18 14:31:23 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/22 16:09:09 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	parser(char *input, t_lexer *lexer)
+int	parser2(char *input, t_lexer *lexer)
 {
 	if (!parse_cmds(input, lexer))
 		return (0);

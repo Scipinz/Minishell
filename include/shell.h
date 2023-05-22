@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/22 16:05:22 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/22 16:09:34 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ int			quote_check(int end);
 bool		clear_lexer(t_lexer **head);
 
 //parser
-int			parser(char *input, t_lexer *lexer);
+int			parser2(char *input, t_lexer *lexer);
 int			parse_cmds(char *input, t_lexer *lexer);
 char		**parse_arg(char *input, t_lexer *lexer, int arg_len);
 char		*is_adjacent(char *input, t_lexer *lexer);
-t_ast_node	*ft_parse(t_lexer *head);
+t_ast_node	*parser(t_lexer *head);
 
 #endif

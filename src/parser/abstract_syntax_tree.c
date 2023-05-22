@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/18 14:26:58 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/18 15:42:27 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/22 16:09:03 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ NEEDS: Environment Path
 NORM
 Seperate functions 
 */
-t_ast_node	*ft_parse(t_lexer *head)
+t_ast_node	*parser(t_lexer *head)
 {
 	t_ast_node 	*root = ft_calloc(1, sizeof(t_ast_node));
 
