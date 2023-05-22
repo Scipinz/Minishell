@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/22 15:46:58 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/22 16:12:09 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,10 @@ kblok work: Friday & Saturday
 lexer -> parser -> expander -> executor
 
 kblok
-	add_list()
-	add_quote()
-	post_process
-	print
-	? envp
+	lexer
+	envp
+	free
 	? norminette
-	? free
 
 qbeukelm
 	? table of commands
