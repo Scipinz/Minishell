@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/18 15:12:39 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/22 15:46:58 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_shell	g_shell;
 
 int	clean_all(t_lexer *lexer, int exit, bool input)
 {
+	clear_list(&g_shell.env);
 	clear_lexer(&lexer);
 	lexer = NULL;
 	return (exit);
@@ -35,7 +36,6 @@ static int	exec_shell(char *input)
 	// 	free(input);
 	// 	exit(clean_all(g_shell.lexer, EXIT_FAILURE, true));
 	// }
-	
 	lexer(input);
 	clean_all(g_shell.lexer, 0, false);
 	free(input);

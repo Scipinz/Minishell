@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/18 15:12:40 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/22 16:05:22 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,18 @@ typedef struct s_env {
 // Abstract Syntax tree
 typedef struct s_ast_node
 {
-    char *type;
-    char *value;
-    struct s_ast_node **children;
-    int num_children;
-} t_ast_node;
+	char				*type;
+	char				*value;
+	struct s_ast_node	**children;
+	int					num_children;
+}	t_ast_node;
 
 typedef struct s_cmd {
 	int		fd_in;
 	int		fd_out;
 	char	*arg;
 
-} t_cmd;
+}	t_cmd;
 
 typedef struct s_shell {
 	t_lexer		*lexer;
@@ -82,35 +82,36 @@ typedef struct s_shell {
 extern t_shell	g_shell;
 
 // main
-int		main(int argc, char **argv, char **envp);
-int		clean_all(t_lexer *lexer, int exit, bool input);
-char	*read_command_line(void);
+int			main(int argc, char **argv, char **envp);
+int			clean_all(t_lexer *lexer, int exit, bool input);
+char		*read_command_line(void);
 
 //signals
-void	init_signals(void);
-
-//lexer
-t_lexer	*lexer(char *input);
-int		is_special(char c);
-int		symbol_length(char *input);
-int		token_length(char *input);
-void	print_list(t_lexer *head);
-void	post_process(char *input, t_lexer *lexer);
-bool	check_type(char *input, char *str);
-int		check_quotes(char *input);
-int		quote_check(int end);
-bool	clear_lexer(t_lexer **head);
-
-//parser
-int	parser(char *input, t_lexer *lexer);
-int	parse_cmds(char *input, t_lexer *lexer);
-char **parse_arg(char *input, t_lexer *lexer, int arg_len);
-char *is_adjacent(char *input, t_lexer *lexer);
-t_ast_node *ft_parse(t_lexer *head);
+void		init_signals(void);
 
 //env
-t_env	*parse_env(char **envp);
-int	add_env(t_env **head, char *env);
-int env_str(t_env *env, char *str);
+t_env		*parse_env(char **envp);
+int			add_env(t_env **head, char *env);
+int			fill_env(t_env *env, char *str);
+t_env		*get_env(t_env *head, char *path);
+
+//lexer
+t_lexer		*lexer(char *input);
+int			is_special(char c);
+int			symbol_length(char *input);
+int			token_length(char *input);
+void		print_list(t_lexer *head);
+void		post_process(char *input, t_lexer *lexer);
+bool		check_type(char *input, char *str);
+int			check_quotes(char *input);
+int			quote_check(int end);
+bool		clear_lexer(t_lexer **head);
+
+//parser
+int			parser(char *input, t_lexer *lexer);
+int			parse_cmds(char *input, t_lexer *lexer);
+char		**parse_arg(char *input, t_lexer *lexer, int arg_len);
+char		*is_adjacent(char *input, t_lexer *lexer);
+t_ast_node	*ft_parse(t_lexer *head);
 
 #endif
