@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/22 16:09:34 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/24 15:36:37 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ t_env		*parse_env(char **envp);
 int			add_env(t_env **head, char *env);
 int			fill_env(t_env *env, char *str);
 t_env		*get_env(t_env *head, char *path);
+t_env		*clear_list(t_env **head);
+int			remove_node(t_env **head, char *key);
+void	sort_env(t_env **head, t_env *new);
 
 //lexer
 t_lexer		*lexer(char *input);

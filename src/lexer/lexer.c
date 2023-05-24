@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/18 14:08:41 by kblok         ########   odam.nl         */
+/*   Updated: 2023/05/24 15:33:55 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	add_token(t_lexer **head, int len, int pos, t_token_type type)
 	new->pos = pos;
 	new->type = type;
 	new->next = NULL;
-	if (!head)
+	if (!*head)
 		*head = new;
 	else
 	{
