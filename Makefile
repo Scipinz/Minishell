@@ -46,6 +46,9 @@ SRCS		=	$(addprefix src/, \
 					env.c \
 					clear_env.c \
 					env_utils.c) \
+				$(addprefix expander/, \
+					expander.c \
+					expander_check.c) \
 				$(addprefix signals/, \
 					signals.c))
 

@@ -124,4 +124,10 @@ t_ast_node	*parse_pipe(t_ast_node *root, t_lexer **curr, char *input);
 t_ast_node	*parser(t_lexer *head, char *input);
 void		ft_print_ast(t_ast_node *node, int indent_level);
 
+//expander
+char		*get_dollar_env(char *input);
+char		*expand(char *input);
+char		*expanded_exit(char *input);
+bool		expander_check(char *input);
+
 #endif
