@@ -75,12 +75,15 @@ static int	infile_output(char *input, t_lexer *lexer)
 
 void	post_process(char *input, t_lexer *lexer)
 {
-	if (lexer->next == NULL)
-		return ;
-	if (!infile_output(input, lexer))
-		return ;
-	if (!set_arg(lexer))
-		return ;
-	find_adjacent(input, lexer);
-	lexer = lexer->next;
+	while (lexer != NULL)
+	{
+		if (lexer->next == NULL)
+			return ;
+		if (!infile_output(input, lexer))
+			return ;
+		if (!set_arg(lexer))
+			return ;
+		find_adjacent(input, lexer);
+		lexer = lexer->next;
+	}
 }
