@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 16:27:21 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/24 15:33:55 by kblok         ########   odam.nl         */
+/*   Updated: 2023/06/15 15:31:58 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void	set_lexer(t_lexer **head, char *input, int len, int i)
 	if (add_token(head, len, i, type) == 0)
 		return ;
 }
-	// Create Table^
 
 t_lexer	*tokens(t_lexer *head, char *input)
 {
@@ -104,10 +103,18 @@ t_lexer	*tokens(t_lexer *head, char *input)
 t_lexer	*lexer(char *input)
 {
 	t_lexer	*head;
+	t_ast_node *root;
+
 
 	head = NULL;
+	ft_printf("\n<===== LEXER =====>\n");
 	head = tokens(head, input);
 	post_process(input, head);
 	print_list(head);
+	
+	ft_printf("\n<===== LEXPARSER =====>\n");
+	ft_printf("Input: %s\n", input);
+	root = parser(head, input);
+	ft_print_ast(root, 2);
 	return (head);
 }

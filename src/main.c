@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:08:28 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/22 16:12:09 by kblok         ########   odam.nl         */
+/*   Updated: 2023/06/15 15:20:47 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	clean_all(t_lexer *lexer, int exit, bool input)
 
 static int	exec_shell(char *input)
 {
+	// input = expander(input);
 	g_shell.lexer = lexer(input);
 	if (!g_shell.lexer)
 	{
@@ -36,6 +37,11 @@ static int	exec_shell(char *input)
 	// 	free(input);
 	// 	exit(clean_all(g_shell.lexer, EXIT_FAILURE, true));
 	// }
+	ft_printf("\n<===== PARSER =====>\n");
+	t_ast_node *root;
+	ft_printf("Input: %s\n", input);
+	root = parser(g_shell.lexer, input);
+	ft_print_ast(root, 2);
 	lexer(input);
 	clean_all(g_shell.lexer, 0, false);
 	free(input);
@@ -74,18 +80,19 @@ int	main(int argc, char **argv, char **envp)
 }
 
 /*
-kblok work: Friday & Saturday
-
+kblok work: Tuesday & Friday & Saturday
 lexer -> parser -> expander -> executor
-
 kblok
-	lexer
-	envp
-	free
-	? norminette
-
+    lexer
+    envp
+    free
+    ? lexer ARG check
+    ? expander (get started)
+    ? norminette
 qbeukelm
-	? table of commands
-	? seg fault
-	? separate functions
+    table of commands
+    seg fault
+    separate functions
+    ? execv
+    grep "include" < include/shell.h > result.txt
  */

@@ -6,7 +6,7 @@
 /*   By: kblok <kblok@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/23 16:01:32 by kblok         #+#    #+#                 */
-/*   Updated: 2023/05/24 15:36:37 by kblok         ########   odam.nl         */
+/*   Updated: 2023/06/12 16:14:48 by kblok         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,15 @@ typedef enum e_token_type {
 	PIPE,
 	HEREDOC,
 	OUTFILE_APPEND,
-	ARGUMENT
+	ARGUMENT,
+	PROGRAM
 }	t_token_type;
+
+typedef enum e_exit
+{
+	SUCCESS,
+	FAILURE
+}	t_exit;
 
 typedef struct s_lexer {
 	t_token_type	type;
@@ -55,10 +62,9 @@ typedef struct s_env {
 	struct s_env	*next;
 }	t_env;
 
-// Abstract Syntax tree
 typedef struct s_ast_node
 {
-	char				*type;
+	t_token_type		type;
 	char				*value;
 	struct s_ast_node	**children;
 	int					num_children;
@@ -94,9 +100,9 @@ t_env		*parse_env(char **envp);
 int			add_env(t_env **head, char *env);
 int			fill_env(t_env *env, char *str);
 t_env		*get_env(t_env *head, char *path);
+void		sort_env(t_env **head, t_env *new);
 t_env		*clear_list(t_env **head);
 int			remove_node(t_env **head, char *key);
-void	sort_env(t_env **head, t_env *new);
 
 //lexer
 t_lexer		*lexer(char *input);
@@ -111,10 +117,11 @@ int			quote_check(int end);
 bool		clear_lexer(t_lexer **head);
 
 //parser
-int			parser2(char *input, t_lexer *lexer);
-int			parse_cmds(char *input, t_lexer *lexer);
-char		**parse_arg(char *input, t_lexer *lexer, int arg_len);
-char		*is_adjacent(char *input, t_lexer *lexer);
-t_ast_node	*parser(t_lexer *head);
+void		*ft_protec_malloc(void *ptr);
+t_ast_node	*ft_new_ast_node(t_lexer **curr, char *input, int num_child);
+t_ast_node	*parse_command(t_lexer **curr, char *input);
+t_ast_node	*parse_pipe(t_ast_node *root, t_lexer **curr, char *input);
+t_ast_node	*parser(t_lexer *head, char *input);
+void		ft_print_ast(t_ast_node *node, int indent_level);
 
 #endif
